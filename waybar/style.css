@@ -1,0 +1,83 @@
+.topbar {
+  font-family: "Noto Sans JP";
+  font-size: 12px;
+
+  background-color: transparent;
+}
+
+/* modules-left */
+.topbar #window {
+  background-color: #fff;
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* modules-center */
+.topbar #taskbar {
+  background-color: #fff;
+
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.topbar #taskbar button {
+  min-height: 0px;
+  border-image-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* modules-right */
+.topbar #workspaces {
+  background-color: #fff;
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.topbar #workspaces button {
+  min-height: 0px;
+  border-image-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.topbar #workspaces button.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000;
+  font-weight: bold;
+}
+
+.topbar #workspaces button.empty {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.topbar #workspaces buttun.persistent {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.topbar #workspaces button.special {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+.topbar #workspaces button.urgent {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.topbar #tray {
+  background-color: #fff;
+
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.topbar #clock {
+  background-color: #fff;
+
+  border-radius: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}

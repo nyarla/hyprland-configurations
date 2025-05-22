@@ -1,0 +1,50 @@
+{
+  "name": "topbar",
+  "position": "top",
+  "mode": "dock",
+  "height": 18,
+  "spacing": 9,
+
+  "modules-left": [
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "wlr/taskbar"
+  ],
+
+  "modules-right": [
+    "hyprland/workspaces",
+    "tray",
+    "clock"
+  ],
+
+  "hyprland/window": {
+    "format": "{title}",
+    "icon": true,
+    "icon-size": 16
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-theme": "Fluent-light", // TODO: support dark mode.
+    "icon-size": 16,
+    "tooltip": true,
+    "tooltip-format": "{name}: {title:.64}",
+    "on-click": "minimize-raise",
+    "on-click-right": "close"
+  },
+
+  "hyprland/workspaces": {},
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "<b>{:L%Y-%m-%d %H:%M:%S(%a)}</b>",
+    "tooltip-format": "{:L%Y年%b%d日}"
+  }
+}
