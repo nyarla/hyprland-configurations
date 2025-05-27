@@ -15,31 +15,24 @@ sub sep : prototype($) {
   return ( sep => "<b># ${label}</b>" );
 }
 
-sub wine {
+sub wine : prototype($) {
   state $prefix ||= '/etc/nixos/dotfiles/files/wine';
   my $cmd = shift;
-  return sub {
-    exec("sh '${prefix}/${cmd}'");
-  };
+  return "bash '${prefix}/${cmd}'";
 }
 
-sub script {
+sub script : prototype($) {
   state $prefix ||= '/etc/nixos/dotfiles/files/scripts';
   my $cmd = shift;
-  return sub {
-    exec("sh '${prefix}/${cmd}'");
-  };
+  return "bash '${prefix}/${cmd}'";
 }
 
-sub jack {
+sub jack : prototype($) {
   state $rate   ||= 'pw-metadata -n settings 0 clock.force-rate 96000';
   state $buffer ||= 'pw-metadata -n settings 0 clock.force-quantum 512';
 
   my $cmd = shift;
-
-  return sub {
-    exec("sh -c '${rate} ; ${buffer} ; QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 pw-jack ${cmd}'");
-  };
+  return "bash -c '${rate} ; ${buffer} ; QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 pw-jack ${cmd}'";
 }
 
 sub apps {
@@ -85,9 +78,9 @@ sub apps {
     'virt-manager'         => launch('virt-manager'),
     'looking-glass-client' => launch('looking-glass-client'),
     'remmina'              => launch('remmina'),
-    'take-snapshot'        => script('vm-snapshot-for-daw'),
-    'waydroid-start'       => script('waydroid-start'),
-    'waydroid-stop'        => script('waydroid-stop'),
+    'take-snapshot'        => launch( script 'vm-snapshot-for-daw' ),
+    'waydroid-start'       => launch( script 'waydroid-start' ),
+    'waydroid-stop'        => launch( script 'waydroid-stop' ),
 
     sep "Internet",
     'firefox'         => launch($browser),
@@ -100,7 +93,7 @@ sub apps {
     sep "Files",
     'Thunar'   => launch($files),
     'calibre'  => launch($ebooks),
-    'kindle'   => wine('Kindle'),
+    'kindle'   => launch( wine 'Kindle' ),
     'atril'    => launch($documents),
     'deadbeef' => launch($music),
     'vlc'      => launch($video),
@@ -129,15 +122,15 @@ sub apps {
     'aseprite'   => launch('aseprite'),
 
     sep "Musics",
-    'bitwig-studio'     => jack('bitwig-studio'),
-    'heilo-workstation' => jack('helio'),
-    'musescore'         => jack('mscore'),
-    'zrythm'            => jack('bash /etc/nixos/dotfiles/files/scripts/zrythm-launch'),
+    'bitwig-studio'     => launch( jack 'bitwig-studio' ),
+    'heilo-workstation' => launch( jack 'helio' ),
+    'musescore'         => launch( jack 'mscore' ),
+    'zrythm'            => launch( jack script 'zrythm-launch' ),
     'famistudio'        => launch('FamiStudio'),
-    'sononym'           => jack('sononym'),
-    'carla'             => jack('carla'),
-    'ildaeil'           => jack('Ildaeil'),
-    'audiogridder'      => jack('AudioGridder'),
+    'sononym'           => launch( jack 'sononym' ),
+    'carla'             => launch( jack 'carla' ),
+    'ildaeil'           => launch( jack 'Ildaeil' ),
+    'audiogridder'      => launch( jack 'AudioGridder' ),
     'voicevox'          => launch('voicevox'),
     'openutau'          => launch('OpenUtau'),
   ];
