@@ -35,6 +35,12 @@ sub jack : prototype($) {
   return "bash -c '${rate} ; ${buffer} ; QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 pw-jack ${cmd}'";
 }
 
+sub nosleep : prototype($) {
+  state $prefix = 'systemd-inhibit --what=idle ';
+  my $cmd = shift;
+  return "${prefix} ${cmd}";
+}
+
 sub apps {
   ## defaults
   state $terminal  ||= 'mlterm-wl';
@@ -44,8 +50,8 @@ sub apps {
   state $text      ||= 'pluma';
   state $documents ||= 'atril';
   state $ebooks    ||= 'calibre';
-  state $music     ||= 'deadbeef';
-  state $video     ||= 'vlc';
+  state $music     ||= nosleep 'deadbeef';
+  state $video     ||= nosleep 'vlc';
   state $files     ||= 'Thunar';
   state $calc      ||= 'mate-calc';
   state $charmap   ||= 'gucharmap';
@@ -75,9 +81,9 @@ sub apps {
     'vial'   => launch('Vial'),
 
     sep "Virtual Machine",
-    'virt-manager'         => launch('virt-manager'),
-    'looking-glass-client' => launch('looking-glass-client'),
-    'remmina'              => launch('remmina'),
+    'virt-manager'         => launch( nosleep 'virt-manager' ),
+    'looking-glass-client' => launch( nosleep 'looking-glass-client' ),
+    'remmina'              => launch( nosleep 'remmina' ),
     'take-snapshot'        => launch( script 'vm-snapshot-for-daw' ),
     'waydroid-start'       => launch( script 'waydroid-start' ),
     'waydroid-stop'        => launch( script 'waydroid-stop' ),
@@ -93,7 +99,7 @@ sub apps {
     sep "Files",
     'Thunar'   => launch($files),
     'calibre'  => launch($ebooks),
-    'kindle'   => launch( wine 'Kindle' ),
+    'kindle'   => launch( nosleep wine 'Kindle' ),
     'atril'    => launch($documents),
     'deadbeef' => launch($music),
     'vlc'      => launch($video),
@@ -115,24 +121,24 @@ sub apps {
     'missioncenter'   => launch($taskmgr),
 
     sep "Illustrations",
-    'gimp'       => launch('gimp'),
-    'krita'      => launch('krita'),
-    'inkscape'   => launch('inkscape'),
-    'pixelorama' => launch('pixelorama --rendering-driver vulkan --gpu-index 0 --display-driver wayland'),
-    'aseprite'   => launch('aseprite'),
+    'gimp'       => launch( nosleep 'gimp' ),
+    'krita'      => launch( nosleep 'krita' ),
+    'inkscape'   => launch( nosleep 'inkscape' ),
+    'pixelorama' => launch( nosleep 'pixelorama --rendering-driver vulkan --gpu-index 0 --display-driver wayland' ),
+    'aseprite'   => launch( nosleep 'aseprite' ),
 
     sep "Musics",
-    'bitwig-studio'     => launch( jack 'bitwig-studio' ),
-    'heilo-workstation' => launch( jack 'helio' ),
-    'musescore'         => launch( jack 'mscore' ),
-    'zrythm'            => launch( jack script 'zrythm-launch' ),
-    'famistudio'        => launch('FamiStudio'),
-    'sononym'           => launch( jack 'sononym' ),
-    'carla'             => launch( jack 'carla' ),
-    'ildaeil'           => launch( jack 'Ildaeil' ),
-    'audiogridder'      => launch( jack 'AudioGridder' ),
-    'voicevox'          => launch('voicevox'),
-    'openutau'          => launch('OpenUtau'),
+    'bitwig-studio'     => launch( nosleep jack 'bitwig-studio' ),
+    'heilo-workstation' => launch( nosleep jack 'helio' ),
+    'musescore'         => launch( nosleep jack 'mscore' ),
+    'zrythm'            => launch( nosleep jack script 'zrythm-launch' ),
+    'famistudio'        => launch( nosleep 'FamiStudio' ),
+    'sononym'           => launch( nosleep jack 'sononym' ),
+    'carla'             => launch( nosleep jack 'carla' ),
+    'ildaeil'           => launch( nosleep jack 'Ildaeil' ),
+    'audiogridder'      => launch( nosleep jack 'AudioGridder' ),
+    'voicevox'          => launch( nosleep 'voicevox' ),
+    'openutau'          => launch( nosleep 'OpenUtau' ),
   ];
   return $apps;
 }
