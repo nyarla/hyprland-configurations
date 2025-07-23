@@ -113,6 +113,9 @@ sub apps {
     'simple-scan' => launch($scanner),
     'gucharmap'   => launch($charmap),
 
+    sep "VR",
+    'immersed' => launch( nosleep 'bash /etc/nixos/dotfiles/files/scripts/launch-immersed' ),
+
     sep "System",
     'pwvucontrol'     => launch($audio),
     'blueman-manager' => launch($bluetooth),
