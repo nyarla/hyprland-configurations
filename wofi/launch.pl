@@ -113,7 +113,9 @@ sub apps {
     'simple-scan' => launch($scanner),
     'gucharmap'   => launch($charmap),
 
-    sep "VR",
+    sep "Game / VR",
+    'steam'    => launch( nosleep 'steam' ),
+    'wivrn'    => launch( nosleep 'bash /etc/nixos/dotfiles/files/scripts/launch-wivrn' ),
     'immersed' => launch( nosleep 'bash /etc/nixos/dotfiles/files/scripts/launch-immersed' ),
 
     sep "System",
