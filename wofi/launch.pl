@@ -94,7 +94,7 @@ sub apps {
     'thunderbird'     => launch($email),
     'bitwarden'       => launch($password),
     'google-chrome'   => launch('google-chrome-stable --ozone-platform=wayland --enable-wayland-ime'),
-    'telegram'        => launch('telegram-desktop'),
+    'telegram'        => launch('Telegram'),
 
     sep "Files",
     'Thunar'   => launch($files),
