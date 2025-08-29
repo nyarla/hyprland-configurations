@@ -126,9 +126,9 @@ sub apps {
     'missioncenter'   => launch($taskmgr),
 
     sep "Illustrations",
-    'gimp'       => launch( nosleep 'gimp' ),
-    'krita'      => launch( nosleep 'krita' ),
-    'inkscape'   => launch( nosleep 'inkscape' ),
+    'gimp'       => launch( nosleep 'amd-run gimp' ),
+    'krita'      => launch( nosleep 'amd-run krita' ),
+    'inkscape'   => launch( nosleep 'amd-run inkscape' ),
     'pixelorama' => launch( nosleep 'pixelorama --rendering-driver vulkan --gpu-index 0 --display-driver wayland' ),
     'aseprite'   => launch( nosleep 'aseprite' ),
 
