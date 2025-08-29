@@ -144,9 +144,6 @@ sub apps {
     'audiogridder'      => launch( nosleep jack 'AudioGridder' ),
     'voicevox'          => launch( nosleep 'voicevox' ),
     'openutau'          => launch( nosleep 'OpenUtau' ),
-
-    sep "Generaive AI",
-    'stability-matrix' => launch('StabilityMatrix'),
   ];
   return $apps;
 }
