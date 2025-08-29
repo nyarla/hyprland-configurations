@@ -115,8 +115,8 @@ sub apps {
 
     sep "Game / VR",
     'steam'    => launch( nosleep 'steam' ),
-    'wivrn'    => launch( nosleep 'bash /etc/nixos/dotfiles/files/scripts/launch-wivrn' ),
-    'immersed' => launch( nosleep 'bash /etc/nixos/dotfiles/files/scripts/launch-immersed' ),
+    'wivrn'    => launch( nosleep script('launch-wivrn') ),
+    'immersed' => launch( nosleep script('launch-immersed') ),
 
     sep "System",
     'pwvucontrol'     => launch($audio),
