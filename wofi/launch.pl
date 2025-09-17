@@ -131,19 +131,6 @@ sub apps {
     'inkscape'   => launch( nosleep 'amd-run inkscape' ),
     'pixelorama' => launch( nosleep 'pixelorama --rendering-driver vulkan --gpu-index 0 --display-driver wayland' ),
     'aseprite'   => launch( nosleep 'aseprite' ),
-
-    sep "Musics",
-    'bitwig-studio'     => launch( nosleep jack 'bitwig-studio' ),
-    'heilo-workstation' => launch( nosleep jack 'helio' ),
-    'musescore'         => launch( nosleep jack 'mscore' ),
-    'zrythm'            => launch( nosleep jack script 'zrythm-launch' ),
-    'famistudio'        => launch( nosleep 'FamiStudio' ),
-    'sononym'           => launch( nosleep jack 'sononym' ),
-    'carla'             => launch( nosleep jack 'carla' ),
-    'ildaeil'           => launch( nosleep jack 'Ildaeil' ),
-    'audiogridder'      => launch( nosleep jack 'AudioGridder' ),
-    'voicevox'          => launch( nosleep 'voicevox' ),
-    'openutau'          => launch( nosleep 'OpenUtau' ),
   ];
   return $apps;
 }
