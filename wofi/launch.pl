@@ -114,9 +114,12 @@ sub apps {
     'gucharmap'   => launch($charmap),
 
     sep "Game / VR",
-    'steam'    => launch( nosleep 'steam' ),
+    'steam'    => launch( nosleep script('launch-steam') ),
     'wivrn'    => launch( nosleep script('launch-wivrn') ),
     'immersed' => launch( nosleep script('launch-immersed') ),
+    'alcom'    => launch( nosleep "unityhub-fhs-env amd-run ALCOM" ),
+    'vrchat'   => launch( nosleep "steam-run steam steam://rungameid/438100" ),
+    'gogh'     => launch( nosleep "steam-run steam steam://rungameid/3213850" ),
 
     sep "System",
     'pwvucontrol'     => launch($audio),
@@ -170,9 +173,7 @@ sub run : prototype($) {
 
 sub main {
   my $ns      = shift // q{};
-  my $actions = {
-    apps => apps,
-  };
+  my $actions = { apps => apps, };
 
   run( $actions->{$ns} // [] );
 }
