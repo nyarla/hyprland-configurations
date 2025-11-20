@@ -92,6 +92,7 @@ sub apps {
     'firefox'         => launch($browser),
     'firefox-private' => launch('firefox -p private'),
     'thunderbird'     => launch($email),
+    'misskey'         => launch('aria'),
     'bitwarden'       => launch($password),
     'google-chrome'   => launch('google-chrome-stable --ozone-platform=wayland --enable-wayland-ime'),
     'telegram'        => launch('Telegram'),
