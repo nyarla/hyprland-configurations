@@ -49,7 +49,7 @@ sub apps {
   state $password  ||= 'bitwarden --enable-features=UseOzonPlatform --ozone-platform=wayland --enable-wayland-ime';
   state $text      ||= 'pluma';
   state $documents ||= 'atril';
-  state $ebooks    ||= 'calibre';
+  state $ebooks    ||= 'thorium-reader';
   state $music     ||= nosleep 'deadbeef';
   state $video     ||= nosleep 'vlc';
   state $files     ||= 'Thunar';
@@ -98,8 +98,9 @@ sub apps {
     'telegram'        => launch('Telegram'),
 
     sep "Files",
-    'Thunar'   => launch($files),
-    'calibre'  => launch($ebooks),
+    'Thunar'  => launch($files),
+    'calibre' => launch('calibre'),
+    'thorium-reader', launch('thorium-reader'),
     'kindle'   => launch( nosleep wine 'Kindle' ),
     'atril'    => launch($documents),
     'deadbeef' => launch($music),
