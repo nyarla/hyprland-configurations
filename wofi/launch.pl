@@ -110,7 +110,6 @@ sub apps {
     'easytag'  => launch('easytag'),
 
     sep "Office",
-    'appflowy'    => launch('appflowy'),
     'mate-calc'   => launch($calc),
     'libreoffice' => launch('libreoffice'),
     'simple-scan' => launch($scanner),
